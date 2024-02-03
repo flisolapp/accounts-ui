@@ -1,0 +1,44 @@
+{
+  "common": {
+    "ok": "OK",
+    "accept": "Sim",
+    "reject": "Não",
+    "turnOnLightMode": "Ativar o modo claro",
+    "turnOnDarkMode": "Ativar o modo escuro",
+    "copied": "Copiado"
+  },
+  "login": {
+    "title": "Login",
+    "dontHaveAnAccount": "Ainda não tem uma conta?",
+    "signUp": "Registre-se",
+    "email": "Email",
+    "password": "Senha",
+    "forgotPassword": "Esqueceu a senha?",
+    "logIn": "Fazer login",
+    "error": {
+      "fieldRequired": "Esse campo é obrigatório.",
+      "invalidEmail": "Esse email é inválido. Tente novamente.",
+      "passwordLength": "Sua senha deve ter no mínimo 6 caracteres.",
+      "verifyData": "Verifique seu email, senha e tente novamente.",
+      "accountsDoesntExists": "Este email não está associado a uma conta de FLISoL. Verifique seu email ou use-o para se registrar e criar uma conta."
+    }
+  },
+  "signup": {
+    "title": "Registre-se",
+    "alreadyHaveAnAccount": "Já tem uma conta?",
+    "loginIn": "Faça login",
+    "email": "Email",
+    "confirmEmail": "Confirme o email",
+    "chooseAPassword": "Escolha uma senha",
+    "confirmPassword": "Confirme a senha",
+    "signUp": "Registrar",
+    "error": {
+      "fieldRequired": "Esse campo é obrigatório.",
+      "invalidEmail": "Esse email é inválido. Tente novamente.",
+      "emailsMismatch": "Os emails não coincidem. Verifique novamente.",
+      "passwordLength": "Sua senha deve ter no mínimo 6 caracteres.",
+      "passwordsMismatch": "As senhas não coincidem.",
+      "accountExists": "Esta conta já existe."
+    }
+  }
+}

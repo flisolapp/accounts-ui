@@ -1,0 +1,73 @@
+<app-page-structure>
+  <h1 class="title">{{ 'login.title' | translate }}</h1>
+
+  <!-- @if (!processing) { -->
+  <p class="description">
+    <span>{{ 'login.dontHaveAnAccount' | translate }}</span>
+    <a routerLink="/sign-up" routerLinkActive="active"
+       ariaCurrentWhenActive="page">{{ 'login.signUp' | translate }}</a>
+  </p>
+
+  <form class="login-form" [formGroup]="formGroup">
+    <mat-form-field class="email-field">
+      <mat-label>{{ 'login.email' | translate }}</mat-label>
+      <input id="email" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. tux@linux.org" autocomplete="off" autocapitalize="off" autocorrect="off" autofocus=""
+             spellcheck="false" [readonly]="processing">
+      @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>{{ 'login.error.invalidEmail' | translate }}</mat-error>
+      }
+      @if (emailFormControl.hasError('required')) {
+        <mat-error>{{ 'login.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="password-field">
+      <mat-label>{{ 'login.password' | translate }}</mat-label>
+      <input id="password" [type]="passwordVisibility ? 'text' : 'password'" matInput
+             [formControl]="passwordFormControl" [errorStateMatcher]="matcher" autocomplete="off" autocapitalize="off"
+             autocorrect="off" spellcheck="false" [readonly]="processing">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="togglePasswordVisibility()">
+        @if (!passwordVisibility) {
+          <span class="material-symbols-outlined">visibility</span>
+        } @else {
+          <span class="material-symbols-outlined">visibility_off</span>
+        }
+      </button>
+      @if (passwordFormControl.hasError('data') && !passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')) {
+        <mat-error>{{ 'login.error.verifyData' | translate }}</mat-error>
+      }
+      @if (passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')) {
+        <mat-error>{{ 'login.error.passwordLength' | translate }}</mat-error>
+      }
+      @if (passwordFormControl.hasError('required')) {
+        <mat-error>{{ 'login.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (!platform.ANDROID && !platform.IOS) {
+      <div class="actionbar desktop">
+        <button mat-flat-button color="primary" [class.button-spinner]="processing"
+                [disabled]="processing || !formValid()" (click)="doLogIn()">
+          {{ 'login.logIn' | translate }}
+        </button>
+        <!-- <button mat-flat-button>{{ 'login.forgotPassword' | translate }}</button> -->
+      </div>
+    }
+
+    @if (platform.ANDROID || platform.IOS) {
+      <div class="actionbar mobile">
+        <button mat-flat-button color="primary" [class.button-spinner]="processing"
+                [disabled]="processing || !formValid()" (click)="doLogIn()">
+          {{ 'login.logIn' | translate }}
+        </button>
+        <!-- <button mat-flat-button>{{ 'login.forgotPassword' | translate }}</button> -->
+      </div>
+    }
+  </form>
+  <!--  }-->
+
+  <!--  @if (processing) {-->
+  <!--    <mat-spinner class="spinner"></mat-spinner>-->
+  <!--  }-->
+
+</app-page-structure>

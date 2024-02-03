@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+// @import 'assets/scss/material-theme';
+@import 'assets/scss/material-theme';
+
+// Fonts
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
+// Usage: https://fonts.google.com/icons?selected=Material+Symbols+Outlined:search:FILL@0;wght@400;GRAD@0;opsz@24&icon.platform=web
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap');
+
+@import 'assets/scss/_button-spinner';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Custom
+:host {
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+// DONE: Fix style flex not working
+.mat-mdc-card-header-text {
+  width: 100%;
+}
+
+// Fade In/Out effect
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: .1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.icon-fadeInOut {
+  animation: fadeInOut 3s infinite;
+}
+
+// toolbar
+.toolbar .language-menu.mat-mdc-icon-button img {
+  width: 24px;
+  height: 18px;
+  border-radius: 2px;
+}
+
+.language-menu-item .mat-mdc-menu-item-text {
+  img {
+    margin-top: 3px;
+    position: absolute;
+    border-radius: 2px;
+  }
+
+  span {
+    margin-left: 32px;
+  }
+}
+
+// DONE: Fix flags images on language selector
+.mat-mdc-icon-button {
+  --mdc-icon-button-icon-size: 16px !important;
+}
+
+.mat-mdc-snack-bar-label {
+  cursor: default;
+}
+
+// search-result
+td {
+  .code .mdc-button__label {
+    font-size: 14px !important;
+    font-weight: normal !important;
+
+    span {
+      font-size: .9rem;
+      vertical-align: sub;
+    }
+  }
+
+  &.download {
+    text-align: center;
+  }
+}
+
+@import 'assets/scss/dark-mode';

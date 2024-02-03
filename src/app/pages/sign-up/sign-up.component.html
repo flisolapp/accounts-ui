@@ -1,0 +1,111 @@
+<app-page-structure>
+  <h1 class="title">{{ 'signup.title' | translate }}</h1>
+
+  <!--  @if (!processing) {-->
+  <p class="description">
+    <span>{{ 'signup.alreadyHaveAnAccount' | translate }}</span>
+    <a routerLink="/sign-in" routerLinkActive="active"
+       ariaCurrentWhenActive="page">{{ 'signup.loginIn' | translate }}</a>
+  </p>
+
+  <form class="signup-form" [formGroup]="formGroup">
+    <mat-form-field class="email-field">
+      <mat-label>{{ 'signup.email' | translate }}</mat-label>
+      <input id="email" type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. tux@linux.org" autocomplete="off" autocapitalize="off" autocorrect="off" autofocus
+             spellcheck="false">
+      @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.invalidEmail' | translate }}</mat-error>
+      }
+      @if (emailFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="confirm-email-field">
+      <mat-label>{{ 'signup.confirmEmail' | translate }}</mat-label>
+      <input id="confirm-email" type="email" matInput [formControl]="confirmEmailFormControl"
+             [errorStateMatcher]="matcher" placeholder="Ex. tux@linux.org" autocomplete="off" autocapitalize="off"
+             autocorrect="off" spellcheck="false">
+      @if (confirmEmailFormControl.hasError('mustMatch') && !confirmEmailFormControl.hasError('email') && !confirmEmailFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.emailsMismatch' | translate }}</mat-error>
+      }
+      @if (confirmEmailFormControl.hasError('email') && !confirmEmailFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.invalidEmail' | translate }}</mat-error>
+      }
+      @if (confirmEmailFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="choose-a-password-field">
+      <mat-label>{{ 'signup.chooseAPassword' | translate }}</mat-label>
+      <input id="choose-a-password" [type]="chooseAPasswordVisibility ? 'text' : 'password'" matInput
+             [formControl]="chooseAPasswordFormControl" [errorStateMatcher]="matcher" autocomplete="new-password"
+             autocapitalize="off" autocorrect="off" spellcheck="false">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="toggleChooseAPasswordVisibility()">
+        @if (!chooseAPasswordVisibility) {
+          <span class="material-symbols-outlined">visibility</span>
+        } @else {
+          <span class="material-symbols-outlined">visibility_off</span>
+        }
+      </button>
+      @if (chooseAPasswordFormControl.hasError('data') && !chooseAPasswordFormControl.hasError('minlength') && !chooseAPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.verifyData' | translate }}</mat-error>
+      }
+      @if (chooseAPasswordFormControl.hasError('minlength') && !chooseAPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.passwordLength' | translate }}</mat-error>
+      }
+      @if (chooseAPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="confirm-password-field">
+      <mat-label>{{ 'signup.confirmPassword' | translate }}</mat-label>
+      <input id="confirm-password" [type]="confirmPasswordVisibility ? 'text' : 'password'" matInput
+             [formControl]="confirmPasswordFormControl" [errorStateMatcher]="matcher" autocomplete="new-password"
+             autocapitalize="off" autocorrect="off" spellcheck="false">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="toggleConfirmPasswordVisibility()">
+        @if (!confirmPasswordVisibility) {
+          <span class="material-symbols-outlined">visibility</span>
+        } @else {
+          <span class="material-symbols-outlined">visibility_off</span>
+        }
+      </button>
+      @if (confirmPasswordFormControl.hasError('mustMatch') && !confirmPasswordFormControl.hasError('data') && !confirmPasswordFormControl.hasError('minlength') && !confirmPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.passwordsMismatch' | translate }}</mat-error>
+      }
+      @if (confirmPasswordFormControl.hasError('data') && !confirmPasswordFormControl.hasError('minlength') && !confirmPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.verifyData' | translate }}</mat-error>
+      }
+      @if (confirmPasswordFormControl.hasError('minlength') && !confirmPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.passwordLength' | translate }}</mat-error>
+      }
+      @if (confirmPasswordFormControl.hasError('required')) {
+        <mat-error>{{ 'signup.error.fieldRequired' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (!platform.ANDROID && !platform.IOS) {
+      <div class="actionbar desktop">
+        <button mat-flat-button color="primary" [class.button-spinner]="processing"
+                [disabled]="processing || !formValid()" (click)="doSignUp()">
+          {{ 'signup.signUp' | translate }}
+        </button>
+      </div>
+    }
+
+    @if (platform.ANDROID || platform.IOS) {
+      <div class="actionbar mobile">
+        <button mat-flat-button color="primary" [class.button-spinner]="processing"
+                [disabled]="processing || !formValid()" (click)="doSignUp()">
+          {{ 'signup.signUp' | translate }}
+        </button>
+      </div>
+    }
+  </form>
+  <!--  }-->
+
+  <!--  @if (processing) {-->
+  <!--    <mat-spinner class="spinner"></mat-spinner>-->
+  <!--  }-->
+
+</app-page-structure>

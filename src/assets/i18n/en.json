@@ -1,0 +1,44 @@
+{
+  "common": {
+    "ok": "OK",
+    "accept": "Yes",
+    "reject": "No",
+    "turnOnLightMode": "Turn on light mode",
+    "turnOnDarkMode": "Turn on dark mode",
+    "copied": "Copied"
+  },
+  "login": {
+    "title": "Log In",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "logIn": "Log in",
+    "error": {
+      "fieldRequired": "This field is required.",
+      "invalidEmail": "That’s not a valid email. Please try again.",
+      "passwordLength": "Your password must have at least 6 characters.",
+      "verifyData": "Double check your email, password and try again.",
+      "accountsDoesntExists": "This email isn't associated with a FLISoL account. Double check your email or use it to sign up and create an account."
+    }
+  },
+  "signup": {
+    "title": "Sign Up",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "loginIn": "Login in",
+    "email": "Email",
+    "confirmEmail": "Confirm email",
+    "chooseAPassword": "Choose a password",
+    "confirmPassword": "Confirm password",
+    "signUp": "Sign up",
+    "error": {
+      "fieldRequired": "This field is required.",
+      "invalidEmail": "That's not a valid email. Please try again.",
+      "emailsMismatch": "Emails don't match. Take another look.",
+      "passwordLength": "Your password must have at least 6 characters.",
+      "passwordsMismatch": "Passwords don't match.",
+      "accountExists": "This account already exists."
+    }
+  }
+}
